@@ -46,7 +46,6 @@ namespace XRAccess.Chirp
 
         [Header("Caption Layer")]
         public string captionLayerName = "Captions";
-        public LayerMask layersOnTop;
 
         [Header("Positioning")]
         public float repositionDelay = 1f;

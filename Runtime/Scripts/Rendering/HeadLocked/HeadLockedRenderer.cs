@@ -202,18 +202,17 @@ namespace XRAccess.Chirp
             captionCamera.CopyFrom(_mainCamera);
             captionCamera.clearFlags = CameraClearFlags.Depth;
             captionCamera.depth = _mainCamera.depth + 1f;
-            captionCamera.cullingMask = _options.layersOnTop;
-            _mainCamera.cullingMask = ~_options.layersOnTop; // inverse of layermask
+
+            int layerMask = LayerMask.GetMask(_options.captionLayerName);
+            captionCamera.cullingMask = layerMask;
+            _mainCamera.cullingMask = ~layerMask; // inverse of layermask
 
 #if USING_URP
-            if (GraphicsSettings.defaultRenderPipeline.name.Contains("UniversalRenderPipeline"))
-            {
-                var captionsCameraData = captionCamera.GetUniversalAdditionalCameraData();
-                var mainCameraData = _mainCamera.GetUniversalAdditionalCameraData();
+            var captionsCameraData = captionCamera.GetUniversalAdditionalCameraData();
+            var mainCameraData = _mainCamera.GetUniversalAdditionalCameraData();
 
-                captionsCameraData.renderType = CameraRenderType.Overlay;
-                mainCameraData.cameraStack.Add(captionCamera);
-            }
+            captionsCameraData.renderType = CameraRenderType.Overlay;
+            mainCameraData.cameraStack.Add(captionCamera);
 #endif
         }
 
