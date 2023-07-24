@@ -1,5 +1,7 @@
 /*
- * Render captions
+ * Script responsible for managing the active caption renderer.
+ * CaptionSource components communicate with this script to
+ * display captions using the active caption renderer.
  */
 
 using System.Collections;
@@ -19,11 +21,17 @@ namespace XRAccess.Chirp
         private List<(uint, Caption)> _currentCaptions = new List<(uint, Caption)>();
         private GameObject _currentRendererObj;
 
+        /// <summary>
+        /// A list of currently active captions in the system.
+        /// </summary>
         public List<(uint, Caption)> currentCaptions
         {
             get { return _currentCaptions; }
         }
 
+        /// <summary>
+        /// Currently active caption renderer component.
+        /// </summary>
         public CaptionRenderer currentRenderer
         {
             get
@@ -57,12 +65,18 @@ namespace XRAccess.Chirp
             return nextCaptionID++;
         }
 
+        /// <summary>
+        /// Clears all current captions from both the captions list and the active caption renderer.
+        /// </summary>
         public void ClearCaptions()
         {
             _currentCaptions.Clear();
             RefreshCaptions();
         }
 
+        /// <summary>
+        /// Forces the active caption renderer to refresh its captions based on the current captions list.
+        /// </summary>
         public void RefreshCaptions()
         {
             if (CaptionSystem.Instance.options.enableCaptions == false)
@@ -76,6 +90,9 @@ namespace XRAccess.Chirp
             currentRenderer.RefreshCaptions(_currentCaptions);
         }
 
+        /// <summary>
+        /// Method to display a timed caption in the caption system.
+        /// </summary>
         public void AddTimedCaption(TimedCaption caption)
         {
             if (_currentRendererObj == null) { return; }
@@ -98,6 +115,9 @@ namespace XRAccess.Chirp
 
         }
 
+        /// <summary>
+        /// Method to switch the caption system to the specified caption renderer.
+        /// </summary>
         public void EnableRenderer(PositioningMode mode)
         {
             DestroyCurrentRenderer();
@@ -112,6 +132,9 @@ namespace XRAccess.Chirp
             }
         }
 
+        /// <summary>
+        /// Method to destroy the current caption renderer, effectively turning captions off.
+        /// </summary>
         public void DestroyCurrentRenderer()
         {
             if (_currentRendererObj != null)

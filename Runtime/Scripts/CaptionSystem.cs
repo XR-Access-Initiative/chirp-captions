@@ -1,5 +1,5 @@
 /*
- * manage captions
+ * Main script to add caption support and access options
  */
 
 using UnityEngine;

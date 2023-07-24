@@ -1,3 +1,11 @@
+/*
+ * Safe area is the area within the user's vision where captions can be safely displayed.
+ * Captions displayed outside the safe area might cause eye strain or be clipped off.
+ * 
+ * Safe area can be thought of as a smaller frustum within the main camera's frustum.
+ * It is defined as percentages of the camera's horizontal (X) and vertical (Y) field of views.
+ */
+
 using UnityEngine;
 
 namespace XRAccess.Chirp
@@ -8,7 +16,7 @@ namespace XRAccess.Chirp
         [Range(0f, 100f)] public float safeAreaXPercent;
         [Range(0f, 100f)] public float safeAreaYPercent;
         public bool showSafeAreaVisual = false;
-        public float visualDistance;
+        public float visualDistance; // distance at which to show safe area visual
 
         private Camera _mainCamera;
         private GameObject _safeAreaVisual;
@@ -37,6 +45,10 @@ namespace XRAccess.Chirp
             }
         }
 
+        /// <summary>
+        /// Get width and height of safe area, given a distance from the camera.
+        /// </summary>
+        /// <param name="distance">Distance from the camera at which to calculate safe area size.</param>
         public Vector2 GetSize(float distance)
         {
             Vector2 fov = GetAngles();
@@ -47,6 +59,9 @@ namespace XRAccess.Chirp
             return new Vector2(width, height);
         }
 
+        /// <summary>
+        /// Get horizontal and vertical angles of safe area.
+        /// </summary>
         public Vector2 GetAngles()
         {
             float verticalAngle = _mainCamera.fieldOfView * (safeAreaYPercent / 100f);

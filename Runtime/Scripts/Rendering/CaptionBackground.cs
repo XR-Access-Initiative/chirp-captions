@@ -1,3 +1,8 @@
+/*
+ * When added to the parent of a GameObject with TextMeshPro text,
+ * this script will create a background that fits to each line of the text.
+ */
+
 using UnityEngine;
 using UnityEngine.TextCore;
 using TMPro;
@@ -6,6 +11,7 @@ namespace XRAccess.Chirp
 {
     public class CaptionBackground : MonoBehaviour
     {
+        [Tooltip("Padding for background in pixels.")]
         public float padding = 8;
 
         private TMP_Text _TMPText;

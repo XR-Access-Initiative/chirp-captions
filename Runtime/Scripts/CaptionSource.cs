@@ -1,5 +1,5 @@
 /*
- * Init and manage captions source
+ * CaptionSource is attached to a GameObject for playing captions from it.
  */
 
 using UnityEngine;
@@ -14,6 +14,11 @@ namespace XRAccess.Chirp
 
         private void InitCaptionSource() { }
 
+        /// <summary>
+        /// Method to play a caption from the caption source.
+        /// </summary> 
+        /// <param name="captionText">The text content of the caption.</param>
+        /// <param name="duration">The duration of the caption in seconds.</param>
         public void ShowTimedCaption(string captionText, float duration)
         {
             TimedCaption caption = new TimedCaption();

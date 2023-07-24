@@ -1,14 +1,25 @@
+/*
+ * Defines available option variables for the caption system
+ * along with renderer-specific options.
+ */
+
 using System;
 using UnityEngine;
 using TMPro;
 
 namespace XRAccess.Chirp
 {
+    /// <summary>
+    /// An enum defining the names of available positioning modes.
+    /// </summary>
     public enum PositioningMode
     {
         HeadLocked
     }
 
+    /// <summary>
+    /// Options that are common to the renderers of all positioning modes.
+    /// </summary>
     [Serializable]
     public class CaptionOptions
     {
@@ -31,6 +42,9 @@ namespace XRAccess.Chirp
         public float extendDuration;
     }
 
+    /// <summary>
+    /// Base class for renderer-specific caption options.
+    /// </summary>
     [Serializable]
     public abstract class RendererOptions { }
 

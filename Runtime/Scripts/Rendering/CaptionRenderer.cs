@@ -1,3 +1,7 @@
+/*
+ * Base class defining a caption renderer.
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 
