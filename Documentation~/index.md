@@ -1,3 +1,3 @@
 # Chirp Caption System Documentation
 
-To be added in a later update.
+Documentation is available on Chirp's [GitHub wiki page](https://github.com/XR-Access-Initiative/chirp-captions/wiki).
