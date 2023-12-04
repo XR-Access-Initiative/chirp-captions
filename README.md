@@ -6,7 +6,7 @@ Chirp is an open-source caption system for extended reality (XR) projects develo
 
 ## Getting Started
 
-Chirp can be easily integrated into any existing Unity project that uses Unity `2020.3` or later.
+Chirp can be easily integrated into any existing Unity project that uses Unity `2020.3` or later. For a step-by-step guide on how to add Chirp to an existing project, visit this article on Equal Entry: https://equalentry.com/accessibility-virtual-reality-captions-open-source/
 
 ### Install the Chirp package
 
